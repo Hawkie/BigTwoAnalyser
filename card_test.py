@@ -37,7 +37,18 @@ def checkflushTuple(hand, expected):
 def checkstraightTuple_wrapped(hand, expected):
     t0 = time.perf_counter()
     st = createTupleHand(hand)
-    r = straightTuple(st)
+    r = StraightTuple(st)
+    t1 = time.perf_counter()
+    d = t1-t0
+    print("Hand:", st)
+    print ("Result:", r)
+    print("Time:", d)
+    assert r == expected
+
+def CheckStraightFlushTuple_wrapped(hand, expected):
+    t0 = time.perf_counter()
+    st = createTupleHand(hand)
+    r = StraightFlushTuple(st)
     t1 = time.perf_counter()
     d = t1-t0
     print("Hand:", st)
@@ -72,6 +83,12 @@ def test_straight_wrapped_1_true():
 
 def test_straight_wrapped_2_false():
     checkstraightTuple_wrapped(handj1, False)
+
+def test_straightflushTuple_true():
+    CheckStraightFlushTuple_wrapped(handldf, True)
+
+def test_straightflushTuple_false():
+    CheckStraightFlushTuple_wrapped(handws, False)
 
 test_straight_wrapped_1_true()
 test_straight_wrapped_2_false()

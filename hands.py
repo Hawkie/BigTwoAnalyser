@@ -29,6 +29,14 @@ handws3 = [47,48,49,50,51,0,1,2,3,4,8]
 
 # all suits in deck
 deck = [*range(52)]
+hand1 = deck[:13]
+hand2 = deck[13:26]
+hand3 = deck[26:39]
+hand4 = deck[39:52]
+print(hand1)
+print(hand2)
+print(hand3)
+print(hand4)
 
 #suits
 clubs = [*range(0, 52, 4)]

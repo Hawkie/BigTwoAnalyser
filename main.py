@@ -1,5 +1,19 @@
 
-# add pytest
+# Big Two Card Values
+#	d	c	h	s
+#3	0	1	2	3
+#4	4	5	6	7
+#5	8	9	10	11
+#6	12	13	14	15
+#7	16	17	18	19
+#8	20	21	22	23
+#9	24	25	26	27
+#10	28	29	30	31
+#j	32	33	34	35
+#q	36	37	38	39
+#k	40	41	42	43
+#a	44	45	46	47
+#2	48	49	50	51
 
 def BigTwoSuitValue(x):
     return x%4
@@ -16,23 +30,6 @@ def BigTwoSuitString(x):
         ss = "S"
     return ss
 
-
-
-# Big Two Card Values
-#	d	c	h	s
-#3	0	1	2	3
-#4	4	5	6	7
-#5	8	9	10	11
-#6	12	13	14	15
-#7	16	17	18	19
-#8	20	21	22	23
-#9	24	25	26	27
-#10	28	29	30	31
-#j	32	33	34	35
-#q	36	37	38	39
-#k	40	41	42	43
-#a	44	45	46	47
-#2	48	49	50	51
 def BigTwoNumberString(x):
     if x<32:
         return str(int(x/4)+3)
@@ -100,14 +97,16 @@ def flushTuple(sortedTupleList, x=5):
     return False
 
 
-def straightTuple(sortedTupleList, x=5):
+def StraightTuple(sortedTupleList, x=5):
     count = 1
     countLow = -1
-    n1 = sortedTupleList[0][1]
+    n1 = sortedTupleList[0][1] # number value 0-12
+    s1 = sortedTupleList[0][3] # suit value 0-3
     indexArray = [*range(1,len(sortedTupleList))] # range 1-13 = 1-12! (stop is exclusive)
     first = n1
     for i in indexArray: # 0-3, 0-11
         n2=sortedTupleList[i][1] # 1-4, 1-12
+        s2=sortedTupleList[i][3]
         diff = n2-n1
         #print("{0}, {1}, {2}".format(c1,c2, diff))
         if diff == 1:
@@ -128,3 +127,34 @@ def straightTuple(sortedTupleList, x=5):
             return True
     return False
 
+
+def StraightFlushTuple(sortedTupleList, x=5):
+    count = 1
+    countLow = -1
+    n1 = sortedTupleList[0][1] # number value 0-12
+    s1 = sortedTupleList[0][3] # suit value 0-3
+    indexArray = [*range(1,len(sortedTupleList))] # range 1-13 = 1-12! (stop is exclusive)
+    first = n1
+    for i in indexArray: # 0-3, 0-11
+        n2=sortedTupleList[i][1] # 1-4, 1-12
+        s2=sortedTupleList[i][3]
+        diff = n2-n1
+        #print("{0}, {1}, {2}".format(c1,c2, diff))
+        if diff == 1 and s1==s2:
+            count = count+1
+        elif diff == -12 and s1==s2: # allow for wrap around straights (e.g. KA234) 
+            count = count +1
+        elif diff > 1:
+            if first == 0: # did we start at 3?
+                if countLow == -1:
+                    countLow = count
+            count = 1
+        if count == x:
+            return True
+        n1 = n2
+        s1 = s2
+    #print("no straight in ", h2)
+    if n2 == 12:
+        if count + countLow == x:
+            return True
+    return False
