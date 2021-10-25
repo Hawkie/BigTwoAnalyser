@@ -1,32 +1,34 @@
 import random
 import time
 from main import *
-
-p = 0
-t = 0
+k2 = 0
+k3 = 0
+k4 = 0
 s = 0
 f = 0
 
-startTime = time.perf_counter()
-
+t0 = time.perf_counter()
 sims = 1000000
 for h in range(sims):
     # random 13 card hand
     hand = random.sample(range(52), 13)
+    hand.sort()
+    st = HandToCardTuple(hand)
 
-
-    if pair(hand):
-        p = p +1
-    if triple(hand):
-        t = t + 1
-    if straight(hand):
+    if XOfAKindTuple(st,2):
+        k2 = k2 +1
+    if XOfAKindTuple(st,3):
+        k3 = k3 + 1
+    if XOfAKindTuple(st,4):
+        k4 = k4 + 1
+    if straightTuple(st):
         s = s + 1
-    if flush(hand):
+    if flushTuple(st):
         f = f +1
 
-endTime = time.perf_counter()
+t1 = time.perf_counter()
+d = t1 - t0
 
-duration = endTime - startTime
-print(duration)
-
-print ("Probabilities after {4} simulations: Pair ={0}, Triple={1}, Straight={2}, Flush={3}".format(p/sims,t/sims,s/sims,f/sims, sims))
+print("Time to run={0} seconds".format(d))
+print ("Probabilities after {0} simulations".format(sims))
+print("Pair={0}\nTriple={1}\nFourOfAKind={2}\nStraight={3}\nFlush={4}".format(k2/sims,k3/sims,k4/sims,s/sims,f/sims))

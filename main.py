@@ -59,6 +59,13 @@ def BigTwoCardTuple(x):
     suitString=BigTwoSuitString(x)
     return (x, numberValue, numberString, suitValue, suitString)
 
+def HandToCardTuple(hand):
+    cards = []
+    for c in hand:
+        x = BigTwoCardTuple(c)
+        cards.append(x)
+    return cards
+
 def card(x): 
     t = BigTwoCardTuple(x)
     return "{0}-{1}".format(t[2], t[4])
@@ -83,11 +90,35 @@ def triple(hand):
                     return True
     return False
 
+def XOfAKindTuple(sortedTuple, x=3):
+    n1 = -1
+    count = 0
+    for c in sortedTuple: #0-3
+        n2 = c[1]
+        if (n1 != n2):
+            count = 1
+            n1 = n2
+        else:
+            count = count +1
+        if count == x:
+            return True
+    return False
+
 def flush(hand, x=5):
     for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
         count = 0
         for c in hand:
             if BigTwoSuitValue(c) == s:
+                count = count +1
+            if count == x:
+                return True
+    return False
+
+def flushTuple(sortedTupleList, x=5):
+    for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
+        count = 0
+        for c in sortedTupleList:
+            if c[3] == s:
                 count = count +1
             if count == x:
                 return True
@@ -121,6 +152,35 @@ def straight(hand, x=5):
     #print("no straight in ", h2)
     if c2 == 12:
         if count + countLow == x-2:
+            return True
+    return False
+
+
+def straightTuple(sortedTupleList, x=5):
+    count = 1
+    countLow = -1
+    c1 = sortedTupleList[0][1]
+    indexArray = [*range(1,len(sortedTupleList))]
+    first = c1
+    for c in indexArray: # 0-3, 0-11
+        c2=sortedTupleList[c][1] # 1-4, 1-12
+        diff = c2-c1
+        #print("{0}, {1}, {2}".format(c1,c2, diff))
+        if diff == 1:
+            count = count+1
+        elif diff == -12: # allow for wrap around straights (e.g. KA234) 
+            count = count +1
+        elif diff > 1:
+            if first == 0: # did we start at 3?
+                if countLow == -1:
+                    countLow = count
+            count = 1
+        if count == x:
+            return True
+        c1 = c2
+    #print("no straight in ", h2)
+    if c2 == 12:
+        if count + countLow == x:
             return True
     return False
 
