@@ -16,8 +16,7 @@ def BigTwoSuitString(x):
         ss = "S"
     return ss
 
-def number(x):
-    return BigTwoNumberValue(x)
+
 
 # Big Two Card Values
 #	d	c	h	s
@@ -52,6 +51,12 @@ def BigTwoNumberString(x):
 def BigTwoNumberValue(x):
     return int(x/4)
 
+#Tuple
+#0 value 0-51
+#1 number 0-12
+#2 nstr 3-10,J,Q,K,A,2
+#3 suit 0-3
+#4 suitStr D,C,H,S
 def BigTwoCardTuple(x):
     numberValue= BigTwoNumberValue(x)
     numberString = BigTwoNumberString(x)
@@ -59,36 +64,16 @@ def BigTwoCardTuple(x):
     suitString=BigTwoSuitString(x)
     return (x, numberValue, numberString, suitValue, suitString)
 
+def CardString(x): 
+    t = BigTwoCardTuple(x)
+    return "{0}-{1}".format(t[2], t[4])
+
 def HandToCardTuple(hand):
     cards = []
     for c in hand:
         x = BigTwoCardTuple(c)
         cards.append(x)
     return cards
-
-def card(x): 
-    t = BigTwoCardTuple(x)
-    return "{0}-{1}".format(t[2], t[4])
-
-def pair(hand):
-    for i in range(len(hand)-1): #0-3
-        first = hand[i]
-        for j in range(len(hand)-i-1): #0-3, 0-2, 0-1, 0
-            second = hand[j+i+1]
-            if number(first) == number(second):
-                return True
-    return False
-
-def triple(hand):
-    for i in range(len(hand)-1): #0-3
-        first = hand[i]
-        for j in range(len(hand)-i-1): #0-3, 0-2, 0-1, 0
-            second = hand[j+i+1]
-            for k in range(len(hand)-i-j-2): #0-2, 0-1, 0
-                third = hand[k+j+i+2]
-                if number(first) == number(second) == number(third):
-                    return True
-    return False
 
 def XOfAKindTuple(sortedTuple, x=3):
     n1 = -1
@@ -104,16 +89,6 @@ def XOfAKindTuple(sortedTuple, x=3):
             return True
     return False
 
-def flush(hand, x=5):
-    for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
-        count = 0
-        for c in hand:
-            if BigTwoSuitValue(c) == s:
-                count = count +1
-            if count == x:
-                return True
-    return False
-
 def flushTuple(sortedTupleList, x=5):
     for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
         count = 0
@@ -124,47 +99,16 @@ def flushTuple(sortedTupleList, x=5):
                 return True
     return False
 
-def straight(hand, x=5):
-    h2 = hand.copy()
-    h2.sort()
-    count = 0
-    countLow = -1
-    fc = h2[0]
-    indexArray = [*range(1,len(h2))]
-    c1=number(fc)
-    first = c1
-    for c in indexArray: # 0-3, 0-11
-        c2=number(h2[c]) # 1-4, 1-12
-        diff = c2-c1
-        #print("{0}, {1}, {2}".format(c1,c2, diff))
-        if diff == 1:
-            count = count+1
-        elif diff == -12: # allow for wrap around straights (e.g. KA234) 
-            count = count +1
-        elif diff > 1:
-            if first == 0:
-                if countLow == -1:
-                    countLow = count
-            count = 0
-        if count == x-1:
-            return True
-        c1 = c2
-    #print("no straight in ", h2)
-    if c2 == 12:
-        if count + countLow == x-2:
-            return True
-    return False
-
 
 def straightTuple(sortedTupleList, x=5):
     count = 1
     countLow = -1
-    c1 = sortedTupleList[0][1]
-    indexArray = [*range(1,len(sortedTupleList))]
-    first = c1
-    for c in indexArray: # 0-3, 0-11
-        c2=sortedTupleList[c][1] # 1-4, 1-12
-        diff = c2-c1
+    n1 = sortedTupleList[0][1]
+    indexArray = [*range(1,len(sortedTupleList))] # range 1-13 = 1-12! (stop is exclusive)
+    first = n1
+    for i in indexArray: # 0-3, 0-11
+        n2=sortedTupleList[i][1] # 1-4, 1-12
+        diff = n2-n1
         #print("{0}, {1}, {2}".format(c1,c2, diff))
         if diff == 1:
             count = count+1
@@ -177,9 +121,9 @@ def straightTuple(sortedTupleList, x=5):
             count = 1
         if count == x:
             return True
-        c1 = c2
+        n1 = n2
     #print("no straight in ", h2)
-    if c2 == 12:
+    if n2 == 12:
         if count + countLow == x:
             return True
     return False

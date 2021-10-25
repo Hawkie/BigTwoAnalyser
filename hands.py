@@ -1,3 +1,4 @@
+import random
 from main import *
 
 # Card Values
@@ -16,7 +17,6 @@ from main import *
 #a	44	45	46	47
 #2	48	49	50	51
 
-
 # sample 5 card hands
 handldf = [0,4,8,12,16] # 3d, 4d, 5d, 6d, 7d
 hand2d3d4d5d5s = [0,4,8,12,15] # 3d, 4d, 5d, 6d, 6s
@@ -27,10 +27,18 @@ handws = [40,44,49,2,7] # wrapped straight KD,AD,2C,3H,4S
 handws2 = [47,48,49,50,51,0,1,2,3,4]
 handws3 = [47,48,49,50,51,0,1,2,3,4,8]
 
-
 # all suits in deck
+deck = [*range(52)]
+
+#suits
 clubs = [*range(0, 52, 4)]
 diamonds = [*range(1,52, 4)]
 hearts = [*range(2,52, 4)]
 spades = [*range(3,52, 4)]
 
+deckr = random.sample(range(52),52)
+cards = HandToCardTuple(deckr)
+#print("randomdeck", cards)
+
+rhand = random.sample(range(52), 13)
+#print("randomhand", rhand)
