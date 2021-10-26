@@ -28,3 +28,6 @@ Python is an interpretive language so if you have python installed, you can run 
 * Visual Studio Code
 * Python version 3.10
 * Visual Studio Extensions: ms-python.python
+
+# Thanks
+This project was inspired by the many enjoyable games of Big Two in Norfolk 2021 that was first taught to both Roger Butler and myself by Guille Phillips. Guille also went on to write the first Big Two Analyser in `php`. Thanks for the inspiration Guille!
