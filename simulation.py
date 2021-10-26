@@ -24,7 +24,7 @@ for h in range(sims):
         k4 = k4 + 1
     if StraightTuple(st):
         s = s + 1
-    if flushTuple(st):
+    if FlushTuple(st):
         f = f + 1
     if StraightFlushTuple(st):
         sf = sf + 1

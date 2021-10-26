@@ -24,7 +24,7 @@ def createTupleHand(hand):
 def checkflushTuple(hand, expected):
     t0 = time.perf_counter()
     st = createTupleHand(hand)
-    r = flushTuple(st)
+    r = FlushTuple(st)
     t1 = time.perf_counter()
     d = t1-t0
     print("Hand:", st)

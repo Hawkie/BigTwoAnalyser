@@ -86,7 +86,7 @@ def XOfAKindTuple(sortedTuple, x=3):
             return True
     return False
 
-def flushTuple(sortedTupleList, x=5):
+def FlushTuple(sortedTupleList, x=5):
     for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
         count = 0
         for c in sortedTupleList:
