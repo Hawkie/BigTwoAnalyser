@@ -14,7 +14,7 @@ for h in range(sims):
     # random 13 card hand
     hand = random.sample(range(52), 13)
     hand.sort()
-    st = HandToCardTuple(hand)
+    st = ValuesToCards(hand)
 
     if XOfAKindTuple(st,2):
         k2 = k2 + 1

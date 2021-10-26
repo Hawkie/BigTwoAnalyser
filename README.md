@@ -3,10 +3,10 @@ Python project to simulate various odds for the card game Big Two: https://en.wi
 
 # Probabilities 
 The calculations created so far are the probabilities of receiving the poker combinations from a starting hand of thirteen. To do this, run the script simulation.py. 
-`>python simulation.py`
+`src>python simulation.py`
 * Output from program
 
-![](simulationOutput.png)
+![](res/simulationOutput.png)
 
 After one million simulations
 * Pair (`99.9899%`)

@@ -4,6 +4,7 @@ import time
 
 from main import *
 from hands import *
+from Card import *
 
 #tuple t = (1, 3, "c")
 #set s = {"a", "b"}
@@ -13,13 +14,20 @@ from hands import *
 
 #deck
 
+c = Card(39)
+print(c.value, c.number, c.suit)
+print(c.name()) # Q-S
+
+def test_cardname():
+    c = Card(39)
+    assert c.name() == "Q-S"
 
 
 
 def createTupleHand(hand):
     sh = hand.copy()
     sh.sort()
-    return HandToCardTuple(sh)
+    return ValuesToCards(sh)
 
 def checkflushTuple(hand, expected):
     t0 = time.perf_counter()
