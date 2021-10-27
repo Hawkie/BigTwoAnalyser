@@ -20,12 +20,13 @@ from main import *
 # sample 5 card hands
 handldf = [0,4,8,12,16] # 3d, 4d, 5d, 6d, 7d
 hand2d3d4d5d5s = [0,4,8,12,15] # 3d, 4d, 5d, 6d, 6s
-hands1 = [38,33,31,24,22] # run 8h,9d, 10s,jc,qh
+hands1 = [38,33,31,24,22] # straight 8h,9d, 10s,jc,qh
 handt1 = [34,32,44,1,33] # triple jh,jd,ad,3c,jc
 handj1 = [4,8,12,37,41,45,49, 22,26,30] # junk 4,5,6,K,A,2, 8,9,10,J
 handws = [40,44,49,2,7] # wrapped straight KD,AD,2C,3H,4S
-handws2 = [47,48,49,50,51,0,1,2,3,4]
-handws3 = [47,48,49,50,51,0,1,2,3,4,8]
+handnws2 = [47,48,49,50,51,0,1,2,3,4] # A222233334 (only 4 card straight and full house)
+handws3 = [47,48,49,50,51,0,1,2,3,4,8] # A2222333345 (5 card straight and full house)
+handfh = [4,5,6, 8, 9] # 44455 (full house)
 
 # all suits in deck
 deck = [*range(52)]

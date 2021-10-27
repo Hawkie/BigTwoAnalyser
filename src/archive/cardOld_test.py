@@ -76,7 +76,7 @@ def test_straight_wrapped_true():
     checkstraight(handws, True)
 
 def test_straight_wrapped_true2():
-    checkstraight(handws2, False)
+    checkstraight(handnws2, False)
 
 def test_straight_wrapped_true3():
     checkstraight(handws3, True)

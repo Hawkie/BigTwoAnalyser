@@ -9,19 +9,26 @@ def ValuesToCards(hand):
         cards.append(c)
     return cards
 
-def XOfAKindTuple(cards, x=3):
+def XOfAKindTuple(cards, x=3, notEqualTo=-1):
     n1 = -1
     count = 0
     for c in cards: #0-3
         n2 = c.number
-        if (n1 != n2):
+        if n2 > n1 or n2 == notEqualTo:
             count = 1
             n1 = n2
         else:
             count = count +1
         if count == x:
-            return True
-    return False
+            return n2
+    return -1
+
+def FullHouse(cards):
+    t = XOfAKindTuple(cards, 3)
+    p = XOfAKindTuple(cards, 2, t)
+    if t>-1 and p>-1 and t!=p:
+        return t
+    return -1
 
 def FlushTuple(cards, x=5):
     for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades

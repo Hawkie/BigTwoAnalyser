@@ -40,8 +40,10 @@ class Card(object):
         return self._n
 
     def numberName(self):
+        if self._v<28:
+            return str(int(self._v/4)+3)
         if self._v<32:
-         return str(int(self._v/4)+3)
+            return "T"
         if self._v<36:
             return "J"
         if self._v<40:
