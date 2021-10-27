@@ -4,7 +4,7 @@ from main import *
 k2 = 0
 k3 = 0
 k4 = 0
-full hfh = 0
+fh = 0
 s = 0
 f = 0
 sf = 0
