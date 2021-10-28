@@ -20,15 +20,17 @@ def XOfAKindTuple(cards, x=3, notEqualTo=-1):
         else:
             count = count +1
         if count == x:
-            return n2
-    return -1
+            return c
+    return None
 
 def FullHouse(cards):
     t = XOfAKindTuple(cards, 3)
-    p = XOfAKindTuple(cards, 2, t)
-    if t>-1 and p>-1 and t!=p:
-        return t
-    return -1
+    if t is not None:
+        p = XOfAKindTuple(cards, 2, t.number)
+        if p is not None:
+            if t!=p:
+                return t
+    return None
 
 def FlushTuple(cards, x=5):
     for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
@@ -37,8 +39,8 @@ def FlushTuple(cards, x=5):
             if c.suit == s:
                 count = count +1
             if count == x:
-                return True
-    return False
+                return c
+    return None
 
 
 def StraightTuple(cards, x=5):
@@ -63,13 +65,13 @@ def StraightTuple(cards, x=5):
                     countLow = count
             count = 1
         if count == x:
-            return True
+            return cards[i]
         n1 = n2
     #print("no straight in ", h2)
-    if n2 == 12:
+    if n2 == 12: # n = 0-12 (12 = 2)
         if count + countLow == x:
-            return True
-    return False
+            return cards[i]
+    return None
 
 
 def StraightFlushTuple(cards, x=5):
@@ -94,11 +96,11 @@ def StraightFlushTuple(cards, x=5):
                     countLow = count
             count = 1
         if count == x:
-            return True
+            return cards[i]
         n1 = n2
         s1 = s2
     #print("no straight in ", h2)
     if n2 == 12:
         if count + countLow == x:
-            return True
-    return False
+            return cards[i]
+    return None

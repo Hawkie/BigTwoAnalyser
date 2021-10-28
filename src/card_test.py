@@ -44,38 +44,41 @@ def Check(f, hand, expected):
     assert r == expected
 
 def test_triple_false2():
-    Check(XOfAKindTuple, hand2d3d4d5d5s, -1)
+    Check(XOfAKindTuple, hand2d3d4d5d5s, None)
 
 def test_triple_true2():
-    Check(XOfAKindTuple,handt1, 8)
+    Check(XOfAKindTuple,handt1, Card(34)) # JH
 
 def test_flushTuple_false():
-    Check(FlushTuple, hand2d3d4d5d5s, False)
+    Check(FlushTuple, hand2d3d4d5d5s, None)
 
 def test_flushTuple_true():
-    Check(FlushTuple, handldf, True)
+    Check(FlushTuple, handldf, Card(16)) # 7-D
+
+def test_straight_true1():
+    Check(StraightTuple, hands1, Card(38)) # Queen high straight
 
 def test_straight_wrapped_1_true():
-    Check(StraightTuple, handws3, True)
+    Check(StraightTuple, handws3, Card(51)) # 2S
 
 def test_straight_wrapped_2_false():
-    Check(StraightTuple, handj1, False)
+    Check(StraightTuple, handj1, None)
 
 def test_straightflushTuple_true():
-    Check(StraightFlushTuple, handldf, True)
+    Check(StraightFlushTuple, handldf, Card(16)) # 7-D
 
 def test_straightflushTuple_false():
-    Check(StraightFlushTuple, handws, False)
+    Check(StraightFlushTuple, handws, None)
 
 def test_fullHouse_true():
-    Check(FullHouse, handfh, 1)
+    Check(FullHouse, handfh, Card(6)) # 4H
 
 def test_fullHouse_true2():
-    Check(FullHouse, handws3, 0)
+    Check(FullHouse, handws3, Card(2)) # 3H
 
 def test_fullHouse_false():
-    Check(FullHouse, handws, -1)
+    Check(FullHouse, handws, None)
 
 test_straight_wrapped_1_true()
 test_straight_wrapped_2_false()
-test_fullHouse_true()
+test_fullHouse_false()
