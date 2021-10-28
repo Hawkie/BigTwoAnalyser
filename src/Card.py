@@ -21,7 +21,7 @@ class Card(object):
         self._s = value%4
 
     def __repr__(self):
-        return self.name()
+        return self.name
 
     def __eq__(self, other):
         return self._v == other._v
@@ -74,5 +74,6 @@ class Card(object):
             sn = "S"
         return sn
 
+    @property
     def name(self):
         return "{0}-{1}".format(self.numberName(), self.suitName())

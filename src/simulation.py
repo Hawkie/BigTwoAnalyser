@@ -17,19 +17,19 @@ for h in range(sims):
     hand.sort()
     st = ValuesToCards(hand)
 
-    if XOfAKindTuple(st,2) is not None:
+    if IsXOfAKindTuple(st,2) is not None:
         k2 += 1
-    if XOfAKindTuple(st,3) is not None:
+    if IsXOfAKindTuple(st,3) is not None:
         k3 += 1
-    if XOfAKindTuple(st,4) is not None:
+    if IsXOfAKindTuple(st,4) is not None:
         k4 += 1
-    if FullHouse(st) is not None:
+    if IsFullHouse(st) is not None:
         fh += 1
-    if StraightTuple(st) is not None:
+    if IsStraight(st) is not None:
         s += 1
-    if FlushTuple(st) is not None:
+    if IsFlush(st) is not None:
         f += 1
-    if StraightFlushTuple(st) is not None:
+    if IsStraightFlush(st) is not None:
         sf += 1
 
 t1 = time.perf_counter()

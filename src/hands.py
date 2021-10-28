@@ -19,6 +19,7 @@ from main import *
 
 # sample 5 card hands
 handldf = [0,4,8,12,16] # 3d, 4d, 5d, 6d, 7d
+handldfmixedup = [0,3,4,7,34,11,35,12,15,36,16,19] # 3=3s, 7=4s, 11=5s, 15=6s, 19=7s
 hand2d3d4d5d5s = [0,4,8,12,15] # 3d, 4d, 5d, 6d, 6s
 hands1 = [38,33,31,24,22] # straight 8h,9d, 10s,jc,qh
 handt1 = [34,32,44,1,33] # triple jh,jd,ad,3c,jc
@@ -34,10 +35,7 @@ hand1 = deck[:13]
 hand2 = deck[13:26]
 hand3 = deck[26:39]
 hand4 = deck[39:52]
-print(hand1)
-print(hand2)
-print(hand3)
-print(hand4)
+
 
 #suits
 clubs = [*range(0, 52, 4)]
@@ -47,7 +45,6 @@ spades = [*range(3,52, 4)]
 
 deckr = random.sample(range(52),52)
 cards = ValuesToCards(deckr)
-print("randomdeck", cards)
 
 rhand = random.sample(range(52), 13)
 #print("randomhand", rhand)
