@@ -31,3 +31,11 @@ Python is an interpretive language so if you have python installed, you can run 
 
 # Thanks
 This project was inspired by the many enjoyable games of Big Two in Norfolk 2021 that was first taught to both Roger Butler and myself by Guille Phillips. Guille also went on to write the first Big Two Analyser in `php`. Thanks for the inspiration Guille!
+
+# Help
+https://docs.docker.com/language/python/build-images/
+
+# Docker
+To build the docker image, cd to BigTwoAnalyser. `docker build --tag hello .`
+To run the docker image. `docker run -d -p 5000:5000 hello`
+Then test with `curl localhost:5000`
