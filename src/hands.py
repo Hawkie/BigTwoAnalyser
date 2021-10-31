@@ -44,7 +44,7 @@ hearts = [*range(2,52, 4)]
 spades = [*range(3,52, 4)]
 
 deckr = random.sample(range(52),52)
-cards = ValuesToCards(deckr)
+cards = values_to_cards(deckr)
 
 rhand = random.sample(range(52), 13)
 #print("randomhand", rhand)

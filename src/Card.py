@@ -42,7 +42,7 @@ class Card(object):
     def number(self):
         return self._n
 
-    def numberName(self):
+    def number_name(self):
         if self._v<28:
             return str(int(self._v/4)+3)
         if self._v<32:
@@ -63,7 +63,7 @@ class Card(object):
     def suit(self):
         return self._s
 
-    def suitName(self):
+    def suit_name(self):
         if self.suit == 0:
             sn = "D"
         elif self.suit == 1:
@@ -76,4 +76,4 @@ class Card(object):
 
     @property
     def name(self):
-        return "{0}-{1}".format(self.numberName(), self.suitName())
+        return "{0}-{1}".format(self.number_name(), self.suit_name())

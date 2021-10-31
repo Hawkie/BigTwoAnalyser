@@ -1,14 +1,14 @@
 
 from Card import *
 
-def ValuesToCards(hand):
+def values_to_cards(hand):
     cards = []
     for v in hand:
         c = Card(v)
         cards.append(c)
     return cards
 
-def IsXOfAKindTuple(cards, x=3, notEqualTo=-1):
+def is_x_of_a_kind(cards, x=3, notEqualTo=-1):
     n1 = -1
     count = 0
     for c in cards: #0-3
@@ -22,16 +22,16 @@ def IsXOfAKindTuple(cards, x=3, notEqualTo=-1):
             return c
     return None
 
-def IsFullHouse(cards):
-    t = IsXOfAKindTuple(cards, 3)
+def is_full_house(cards):
+    t = is_x_of_a_kind(cards, 3)
     if t is not None:
-        p = IsXOfAKindTuple(cards, 2, t.number)
+        p = is_x_of_a_kind(cards, 2, t.number)
         if p is not None:
             if t!=p:
                 return t
     return None
 
-def IsFlush(cards, x=5):
+def is_flush(cards, x=5):
     for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
         count = 0
         for c in cards:
@@ -42,7 +42,7 @@ def IsFlush(cards, x=5):
     return None
 
 # Pred: return 1 when true, -1 when false, 0 to ignore and continue
-def NumberDiffPred(c1,c2):
+def number_diff_pred(c1,c2):
     diff = c2.number-c1.number
     if diff == 1 or diff == -12:
         return 1
@@ -51,41 +51,41 @@ def NumberDiffPred(c1,c2):
     return 0 # if diff = 0
     
 
-def SuitEqualPred(c1,c2):
+def suit_equal_pred(c1,c2):
     if c2.suit == c1.suit:
         return 1
     return 0
 
-def IsStraight(cards, x=5, pred=lambda *c: NumberDiffPred(c[0], c[1])):
-    count = 1
-    countLow = 0
+def is_straight(cards, x=5, pred=lambda *c: number_diff_pred(c[0], c[1])):
+    _count = 1
+    _count_low = 0
     c1 = cards[0]
     first = c1
     for c in cards[1:]: # 0-3, 0-11
         p = pred(c1, c)
         if p == 1:
-            count += 1
+            _count += 1
         elif p == -1:
             if first.number == 0: # wrap function -> did we start at 3?
-                if countLow == 0:
-                    countLow = count
-            count = 1
-        if count == x:
+                if _count_low == 0:
+                    _count_low = _count
+            _count = 1
+        if _count == x:
             return c
         c1 = c
     if c1.number == 12: # n = 0-12 (12 = 2)
-        if count + countLow == x:
+        if _count + _count_low == x:
             return c1
     return None
 
-def IsStraightFlush(cards, x=5):
+def is_straight_flush(cards, x=5):
     for s in range(4): # suits 0-3 0 = diamonds, 1 = clubs, 2 = hearts, 3 = spades
         suitedCards = []
         for c in cards:
             if c.suit == s:
                 suitedCards.append(c)
         if len(suitedCards) > 1:
-            r = IsStraight(suitedCards)
+            r = is_straight(suitedCards)
             if r is not None:
                 return r
     return None

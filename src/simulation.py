@@ -15,21 +15,21 @@ for h in range(sims):
     # random 13 card hand
     hand = random.sample(range(52), 13)
     hand.sort()
-    st = ValuesToCards(hand)
+    st = values_to_cards(hand)
 
-    if IsXOfAKindTuple(st,2) is not None:
+    if is_x_of_a_kind(st,2) is not None:
         k2 += 1
-    if IsXOfAKindTuple(st,3) is not None:
+    if is_x_of_a_kind(st,3) is not None:
         k3 += 1
-    if IsXOfAKindTuple(st,4) is not None:
+    if is_x_of_a_kind(st,4) is not None:
         k4 += 1
-    if IsFullHouse(st) is not None:
+    if is_full_house(st) is not None:
         fh += 1
-    if IsStraight(st) is not None:
+    if is_straight(st) is not None:
         s += 1
-    if IsFlush(st) is not None:
+    if is_flush(st) is not None:
         f += 1
-    if IsStraightFlush(st) is not None:
+    if is_straight_flush(st) is not None:
         sf += 1
 
 t1 = time.perf_counter()

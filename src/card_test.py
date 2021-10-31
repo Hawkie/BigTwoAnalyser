@@ -25,78 +25,78 @@ def test_cardname():
 #c = Card(38)
 #a(test_cardname, c)
 
-def createTupleHand(hand):
+def create_hand(hand):
     hand.sort()
-    return ValuesToCards(hand)
+    return values_to_cards(hand)
 
-def Execute(f, hand):
+def execute(f, hand):
     return f(hand)
 
-def Check(f, hand, expected):
+def check(f, hand, expected):
     print("Testing: ", f.__name__)
     t0 = time.perf_counter()
-    st = createTupleHand(hand)
-    r = Execute(f, st)
+    st = create_hand(hand)
+    r = execute(f, st)
     t1 = time.perf_counter()
     d = t1-t0
     print("Hand:{0}, Time:{1}\nResult:{2}".format(st, d, r))
     assert r == expected
 
 def test_triple_false2():
-    Check(IsXOfAKindTuple, hand2d3d4d5d5s, None)
+    check(is_x_of_a_kind, hand2d3d4d5d5s, None)
 
 def test_triple_true2():
-    Check(IsXOfAKindTuple,handt1, Card(34)) # JH
+    check(is_x_of_a_kind,handt1, Card(34)) # JH
 
 def test_flushTuple_false():
-    Check(IsFlush, hand2d3d4d5d5s, None)
+    check(is_flush, hand2d3d4d5d5s, None)
 
 def test_flushTuple_true():
-    Check(IsFlush, handldf, Card(16)) # 7-D
+    check(is_flush, handldf, Card(16)) # 7-D
 
 def test_straight_true1():
-    Check(IsStraight, hands1, Card(38)) # Queen high straight
+    check(is_straight, hands1, Card(38)) # Queen high straight
 
 def test_straight_wrapped_1_true():
-    Check(IsStraight, handws3, Card(51)) # 2S
+    check(is_straight, handws3, Card(51)) # 2S
 
 def test_straight_wrapped_2_false():
-    Check(IsStraight, handj1, None)
+    check(is_straight, handj1, None)
 
 def test_straightflushTuple_true():
-    Check(IsStraightFlush, handldf, Card(16)) # 7-D
+    check(is_straight_flush, handldf, Card(16)) # 7-D
 
 def test_straightflushTuple_true1():
-    Check(IsStraightFlush, handldfmixedup, Card(19)) # 7-S
+    check(is_straight_flush, handldfmixedup, Card(19)) # 7-S
     
 def test_straightflushTuple_false():
-    Check(IsStraightFlush, handws, None)
+    check(is_straight_flush, handws, None)
 
 def test_fullHouse_true():
-    Check(IsFullHouse, handfh, Card(6)) # 4H
+    check(is_full_house, handfh, Card(6)) # 4H
 
 def test_fullHouse_true2():
-    Check(IsFullHouse, handws3, Card(2)) # 3H
+    check(is_full_house, handws3, Card(2)) # 3H
 
 def test_fullHouse_false():
-    Check(IsFullHouse, handws, None)
+    check(is_full_house, handws, None)
 
 def test_straight_performance():
     # testfunc = lambda *c: NumberDiffPred(c[0], c[1])
     #expected = [Card(38), Card(51), Card(16)]
     hands = [hands1, handws3, handldf]
-    tests = [IsStraight, IsStraightFlush, IsFullHouse, IsXOfAKindTuple, IsFlush]
+    tests = [is_straight, is_straight_flush, is_full_house, is_x_of_a_kind, is_flush]
     testNumber = 0
     for test in tests:
         print("Testing: ", test.__name__)
         t0 = time.perf_counter()
         for hand in hands:
-            st = createTupleHand(hand)
+            st = create_hand(hand)
             print("Hand: {0}".format(st))
 
             # loop many times
             for i in range(10000):
-                Execute(tests[testNumber], st)
+                execute(tests[testNumber], st)
 
             # test result against expected
             #if expected[test] is None:
