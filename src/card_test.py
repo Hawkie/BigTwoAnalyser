@@ -12,8 +12,6 @@ from Card import *
 #list = ["a", "b"]
 #dict = {"a":1, "b": 2}
 
-#deck
-
 c = Card(39)
 print("Testing Card Props for QS",c.name,c.value, c.number, c.suit)
 
