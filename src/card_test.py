@@ -48,10 +48,10 @@ def test_triple_false2():
 def test_triple_true2():
     check(is_x_of_a_kind,handt1, Card(34)) # JH
 
-def test_flushTuple_false():
+def test_flush_false():
     check(is_flush, hand2d3d4d5d5s, None)
 
-def test_flushTuple_true():
+def test_flush_true():
     check(is_flush, handldf, Card(16)) # 7-D
 
 def test_straight_true1():
@@ -63,27 +63,25 @@ def test_straight_wrapped_1_true():
 def test_straight_wrapped_2_false():
     check(is_straight, handj1, None)
 
-def test_straightflushTuple_true():
+def test_straight_flush_true():
     check(is_straight_flush, handldf, Card(16)) # 7-D
 
-def test_straightflushTuple_true1():
+def test_straight_flush_true1():
     check(is_straight_flush, handldfmixedup, Card(19)) # 7-S
     
-def test_straightflushTuple_false():
+def test_straight_flush_false():
     check(is_straight_flush, handws, None)
 
-def test_fullHouse_true():
+def test_full_house_true():
     check(is_full_house, handfh, Card(6)) # 4H
 
-def test_fullHouse_true2():
+def test_full_house_true2():
     check(is_full_house, handws3, Card(2)) # 3H
 
-def test_fullHouse_false():
+def test_full_house_false():
     check(is_full_house, handws, None)
 
 def test_straight_performance():
-    # testfunc = lambda *c: NumberDiffPred(c[0], c[1])
-    #expected = [Card(38), Card(51), Card(16)]
     hands = [hands1, handws3, handldf]
     tests = [is_straight, is_straight_flush, is_full_house, is_x_of_a_kind, is_flush]
     testNumber = 0
@@ -109,5 +107,5 @@ def test_straight_performance():
         testNumber += 1
     
     
-test_straightflushTuple_true1()
+test_straight_flush_true1()
 test_straight_performance()
