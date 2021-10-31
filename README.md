@@ -9,12 +9,13 @@ The calculations created so far are the probabilities of receiving the poker com
 ![](res/simulationOutput.png)
 
 After one million simulations
-* Pair (`99.9899%`)
-* Triple (`48.988%`)
-* FourOfAKind (`3.4036%`)
-* Straight (`58.05%`). Five cards in sequence (e.g. 6,7,8,9,10), including wrap around staights (e.g. K,A,2,3,4).=
-* Flush (`64.8207%`) Five cards of the same suit.
-* StraightFlush (`3.4254%`)
+* Pair (`99.9895%`)
+* Triple (`49.0021%`)
+* FourOfAKind (`3.3848%`)
+* FullHouse (`48.3154%`)
+* Straight (`58.0163%`). Five cards in sequence (e.g. 6,7,8,9,10), including wrap around staights (e.g. K,A,2,3,4).=
+* Flush (`64.9249%`) Five cards of the same suit.
+* StraightFlush (`2.0574%`)
 
 # Project Goal
 The aim of the project is to calculate and display probabilities of winning against 1,2 or 3 opponents with a given hand and how best to play each hand.
