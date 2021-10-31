@@ -66,13 +66,13 @@ def test_straight_wrapped_2_false():
     Check(IsStraight, handj1, None)
 
 def test_straightflushTuple_true():
-    Check(StraightFlushTuple, handldf, Card(16)) # 7-D
+    Check(IsStraightFlush, handldf, Card(16)) # 7-D
 
 def test_straightflushTuple_true1():
     Check(IsStraightFlush, handldfmixedup, Card(19)) # 7-S
     
 def test_straightflushTuple_false():
-    Check(StraightFlushTuple, handws, None)
+    Check(IsStraightFlush, handws, None)
 
 def test_fullHouse_true():
     Check(IsFullHouse, handfh, Card(6)) # 4H

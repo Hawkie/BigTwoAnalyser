@@ -36,11 +36,12 @@ def IsFlush(cards, x=5):
         count = 0
         for c in cards:
             if c.suit == s:
-                count = count +1
+                count += 1
             if count == x:
                 return c
     return None
 
+# Pred: return 1 when true, -1 when false, 0 to ignore and continue
 def NumberDiffPred(c1,c2):
     diff = c2.number-c1.number
     if diff == 1 or diff == -12:
@@ -50,12 +51,10 @@ def NumberDiffPred(c1,c2):
     return 0 # if diff = 0
     
 
-def NumberDiffAndSuitEqualPred(c1,c2):
-    diff = c2.number-c1.number
+def SuitEqualPred(c1,c2):
     if c2.suit == c1.suit:
-        if diff == 1 or diff == -12:
-            return 1
-    return -1
+        return 1
+    return 0
 
 def IsStraight(cards, x=5, pred=lambda *c: NumberDiffPred(c[0], c[1])):
     count = 1
