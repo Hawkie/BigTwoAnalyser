@@ -1,19 +1,19 @@
 
-from Card import *
+import Card as cd
 
 def values_to_cards(hand):
     cards = []
     for v in hand:
-        c = Card(v)
+        c = cd.Card(v)
         cards.append(c)
     return cards
 
-def is_x_of_a_kind(cards, x=3, notEqualTo=-1):
+def is_x_of_a_kind(cards, x=3, not_equal_to=-1):
     n1 = -1
     count = 0
     for c in cards: #0-3
         n2 = c.number
-        if n2 > n1 or n2 == notEqualTo:
+        if n2 > n1 or n2 == not_equal_to:
             count = 1
             n1 = n2
         else:
@@ -61,20 +61,18 @@ def is_straight(cards, x=5, pred=lambda *c: number_diff_pred(c[0], c[1])):
     _count_low = 0
     c1 = cards[0]
     first = c1
-    for c in cards[1:]: # 0-3, 0-11
+    for c in cards[1:]: # 0-3, 0-11 [1:] start at 1
         p = pred(c1, c)
         if p == 1:
             _count += 1
         elif p == -1:
-            if first.number == 0: # wrap function -> did we start at 3?
-                if _count_low == 0:
+            if first.number == 0 and _count_low == 0:
                     _count_low = _count
             _count = 1
         if _count == x:
             return c
         c1 = c
-    if c1.number == 12: # n = 0-12 (12 = 2)
-        if _count + _count_low == x:
+    if c1.number == 12 and _count + _count_low == x: # n = 0-12 (12 = 2)
             return c1
     return None
 

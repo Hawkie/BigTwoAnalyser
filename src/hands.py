@@ -36,7 +36,6 @@ hand2 = deck[13:26]
 hand3 = deck[26:39]
 hand4 = deck[39:52]
 
-
 #suits
 clubs = [*range(0, 52, 4)]
 diamonds = [*range(1,52, 4)]

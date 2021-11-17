@@ -1,0 +1,17 @@
+[
+  "src/card_test.py::test_cardname",
+  "src/card_test.py::test_triple_false2",
+  "src/card_test.py::test_triple_true2",
+  "src/card_test.py::test_flush_false",
+  "src/card_test.py::test_flush_true",
+  "src/card_test.py::test_straight_true1",
+  "src/card_test.py::test_straight_wrapped_1_true",
+  "src/card_test.py::test_straight_wrapped_2_false",
+  "src/card_test.py::test_straight_flush_true",
+  "src/card_test.py::test_straight_flush_true1",
+  "src/card_test.py::test_straight_flush_false",
+  "src/card_test.py::test_full_house_true",
+  "src/card_test.py::test_full_house_true2",
+  "src/card_test.py::test_full_house_false",
+  "src/card_test.py::test_straight_performance"
+]

@@ -11,6 +11,7 @@ sf = 0
 
 t0 = time.perf_counter()
 sims = 1000000
+print("Running {0} simulations for probabilities".format(sims))
 for h in range(sims):
     # random 13 card hand
     hand = random.sample(range(52), 13)

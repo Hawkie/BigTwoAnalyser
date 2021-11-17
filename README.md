@@ -37,6 +37,6 @@ This project was inspired by the many enjoyable games of Big Two in Norfolk 2021
 https://docs.docker.com/language/python/build-images/
 
 # Docker
-To build the docker image, cd to BigTwoAnalyser. `docker build --tag hello .`
-To run the docker image. `docker run -d -p 5000:5000 hello`
+To build the docker image, cd to BigTwoAnalyser. `docker build --tag hello-docker .`
+To run the docker image. `docker run -d -p 5000:5000 hello-docker`
 Then test with `curl localhost:5000`

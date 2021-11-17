@@ -30,14 +30,6 @@ class Card(object):
     def value(self):
         return self._v
 
-    #@x.setter
-    #def value(self, new_value):
-    #    self._v = new_value
-
-    #@x.deleter
-    #def x(self):
-    #    del self._x
-
     @property
     def number(self):
         return self._n
