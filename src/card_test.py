@@ -17,7 +17,8 @@ print("Testing Card Props for QS",c.name,c.value, c.number, c.suit)
 
 def test_cardname():
     c = Card(38)
-    assert c.name == "Q-H"
+    if c.name != "Q-H":
+        raise AssertionError
 
 
 
@@ -36,7 +37,8 @@ def check(f, hand, expected):
     t1 = time.perf_counter()
     d = t1-t0
     print("Hand:{0}, Time:{1}\nResult:{2}".format(st, d, r))
-    assert r == expected
+    if r != expected:
+        raise AssertionError
 
 def test_triple_false2():
     check(main.is_x_of_a_kind, hands.hand2d3d4d5d5s, None)
