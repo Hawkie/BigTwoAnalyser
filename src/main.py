@@ -26,9 +26,8 @@ def is_full_house(cards):
     t = is_x_of_a_kind(cards, 3)
     if t is not None:
         p = is_x_of_a_kind(cards, 2, t.number)
-        if p is not None:
-            if t!=p:
-                return t
+        if p is not None and t!=p:
+            return t
     return None
 
 def is_flush(cards, x=5):
