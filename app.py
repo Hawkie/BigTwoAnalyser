@@ -3,9 +3,9 @@ from flask import Flask
 
 app = Flask(__name__)
 csrf = CSRFProtect()
-csrf.init_app(app) # Compliant
+csrf.init_app(app)  # Compliant
 
 
-@app.route('/')
+@app.route("/")
 def hello_world():
-    return 'Hello, Docker!'
+    return "Hello, Docker!"
