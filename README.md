@@ -40,3 +40,12 @@ https://docs.docker.com/language/python/build-images/
 To build the docker image, cd to BigTwoAnalyser. `docker build --tag hello-docker .`
 To run the docker image. `docker run -d -p 5000:5000 hello-docker`
 Then test with `curl localhost:5000`
+
+
+# Quality Control
+
+[![DeepSource](https://app.deepsource.com/gh/Hawkie/BigTwoAnalyser.svg/?label=code+coverage&show_trend=true&token=s4JCukTQ5BuadMnnfwiLgy4J)](https://app.deepsource.com/gh/Hawkie/BigTwoAnalyser/)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f84fbb7c08a84e17b625a102706d55b9)](https://app.codacy.com/gh/Hawkie/BigTwoAnalyser/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hawkie_BigTwoAnalyser&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hawkie_BigTwoAnalyser)
