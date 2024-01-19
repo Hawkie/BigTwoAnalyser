@@ -1,6 +1,7 @@
 import unittest
 from Card import *
 
+
 class TestCardMethods(unittest.TestCase):
 
     def setUp(self) -> None:
@@ -15,6 +16,7 @@ class TestCardMethods(unittest.TestCase):
 
     def test_number_name(self):
         self.assertEqual(self._c.suit_name(), 'S')
+
 
 if __name__ == '__main__':
     unittest.main()
