@@ -2,8 +2,8 @@ import random as r
 import test
 import time
 
-import main
 import hands
+import main
 from Card import *
 
 # tuple t = (1, 3, "c")
