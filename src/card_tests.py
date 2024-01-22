@@ -10,10 +10,10 @@ class TestCardMethods(unittest.TestCase):
     def tearDown(self) -> None:
         return super().tearDown()
 
-    def test_number_name(self):
+    def test_number_nameQ(self):
         self.assertEqual(self._c.number_name(), "Q")
 
-    def test_number_name(self):
+    def test_number_nameS(self):
         self.assertEqual(self._c.suit_name(), "S")
 
 
