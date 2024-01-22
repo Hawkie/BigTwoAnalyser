@@ -49,7 +49,7 @@ def number_diff_pred(c1, c2):
     diff = c2.number - c1.number
     if diff == 1 or diff == -12:
         return 1
-    elif diff > 1:
+    if diff > 1:
         return -1
     return 0  # if diff = 0
 
