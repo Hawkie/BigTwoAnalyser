@@ -32,6 +32,7 @@ Python is an interpretive language so if you have python installed, you can run 
 
 # Thanks
 This project was inspired by the many enjoyable games of Big Two in Norfolk 2021 that was first taught to both Roger Butler and myself by Guille Phillips. Guille also went on to write the first Big Two Analyser in `php`. Thanks for the inspiration Guille!
+Thanks to Roger Butler, who also implemented a big two probability calculator in c#, with unmatched performance. https://github.com/RBUTLER999/BigTwo
 
 # Help
 https://docs.docker.com/language/python/build-images/
